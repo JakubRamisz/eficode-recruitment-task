@@ -1,0 +1,13 @@
+version: '3'
+services:
+  weatherapp-frontend:
+    image: weatherapp_frontend:latest
+    
+    ports:
+      - 8000:8000
+  weatherapp-backend:
+    image: weatherapp_backend:latest
+    env_file:
+      - .env
+    ports:
+      - 9000:9000
