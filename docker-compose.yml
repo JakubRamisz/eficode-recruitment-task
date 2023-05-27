@@ -1,13 +1,27 @@
 version: '3'
 services:
   weatherapp-frontend:
-    image: weatherapp_frontend:latest
-    
+    build: frontend
+    command: npm start
+    restart: always
     ports:
       - 8000:8000
+    volumes:
+      - ./frontend:/frontend/
+      - node_modules_frontend:/backend/node_modules
+
   weatherapp-backend:
-    image: weatherapp_backend:latest
+    build: backend
+    command: npm run dev
+    restart: always
     env_file:
       - .env
     ports:
       - 9000:9000
+    volumes:
+      - ./backend:/backend/
+      - node_modules_backend:/backend/node_modules
+
+volumes:
+    node_modules_backend: {}
+    node_modules_frontend: {}
