@@ -14,8 +14,8 @@ services:
     build: backend
     command: npm run dev
     restart: always
-    env_file:
-      - .env
+    environment:
+      - APPID=${APPID}
     ports:
       - 9000:9000
     volumes:
